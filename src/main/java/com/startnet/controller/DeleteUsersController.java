@@ -27,7 +27,7 @@ public class DeleteUsersController implements Controller {
         this.sysUserService = sysUserService;
     }
     @Override
-    public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) throws IOException {
+    public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) {
         String userIds = arg0.getParameter("userIds");
         if (StringUtils.isEmpty(userIds)){
             return null;
