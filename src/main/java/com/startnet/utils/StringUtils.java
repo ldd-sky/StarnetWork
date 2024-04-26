@@ -1,9 +1,9 @@
 package com.startnet.utils;
 
 /**
- * <p>Description: todo</p >
+ * <p>Description: 字符串工具类</p >
  * <p>Copyright: Copyright (c)2024</p >
- * <p>Company: todo</p >
+ * <p>Company: starNet</p >
  * <P>Created Date: 2024年04月24日</P>
  *
  * @author LiuYuHan

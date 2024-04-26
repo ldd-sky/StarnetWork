@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>Description: todo</p >
+ * <p>Description: 用户表Dao层</p >
  * <p>Copyright: Copyright (c)2024</p >
- * <p>Company: todo</p >
+ * <p>Company: starNet</p >
  * <P>Created Date: 2024年04月24日</P>
  *
  * @author LiuYuHan

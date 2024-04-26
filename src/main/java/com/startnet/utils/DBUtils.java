@@ -6,9 +6,9 @@ import java.sql.*;
 import java.util.Properties;
 
 /**
- * <p>Description: todo</p >
+ * <p>Description: 数据库连接工具类</p >
  * <p>Copyright: Copyright (c)2024</p >
- * <p>Company: todo</p >
+ * <p>Company: starNet</p >
  * <P>Created Date: 2024年04月24日</P>
  *
  * @author LiuYuHan

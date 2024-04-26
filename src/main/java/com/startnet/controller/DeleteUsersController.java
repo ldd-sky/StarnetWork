@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>Description: todo</p >
+ * <p>Description: 删除用户</p >
  * <p>Copyright: Copyright (c)2024</p >
- * <p>Company: todo</p >
+ * <p>Company: starNet</p >
  * <P>Created Date: 2024年04月26日</P>
  *
  * @author LiuYuHan

@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * <p>Description: todo</p >
+ * <p>Description: 获取用户信息列表</p >
  * <p>Copyright: Copyright (c)2024</p >
- * <p>Company: todo</p >
+ * <p>Company: starNet</p >
  * <P>Created Date: 2024年04月24日</P>
  *
  * @author LiuYuHan
