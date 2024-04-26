@@ -1,9 +1,6 @@
 package com.startnet.service;
 
-import com.mysql.cj.xdevapi.JsonValue;
 import com.startnet.bean.SysUser;
-
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -22,14 +19,14 @@ public interface ISysUserService {
      * @param sysUser   用户信息
      * @return          0 成功
      */
-    public int addSysUser(SysUser sysUser);
+    int addSysUser(SysUser sysUser);
 
     /**
      * 查询用户
      *
      * @return allUser
      */
-    public List<SysUser> listAll();
+    List<SysUser> listAll();
 
     /**
      * 用户登录
@@ -37,12 +34,12 @@ public interface ISysUserService {
      * @param pwd       密码
      * @return          0 成功 -1 失败
      */
-    public int login(String userName, String pwd);
+    int login(String userName, String pwd);
 
     /**
      * 删除用户
      * @param userIds   用户id
      * @return          0 成功 -1 失败
      */
-    public int deleteUsers(List<Long> userIds);
+    int deleteUsers(List<Long> userIds);
 }

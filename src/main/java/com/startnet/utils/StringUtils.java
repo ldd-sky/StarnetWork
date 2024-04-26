@@ -11,12 +11,12 @@ package com.startnet.utils;
  */
 public class StringUtils {
     // 验证是否为空
-    public static final boolean isEmpty(String str){
+    public static boolean isEmpty(String str){
         return (null==str) || str.trim().isEmpty();
     }
 
     // 验证非空
-    public static final boolean isNotEmpty(String str){
+    public static boolean isNotEmpty(String str){
         return !StringUtils.isEmpty(str);
     }
 }
