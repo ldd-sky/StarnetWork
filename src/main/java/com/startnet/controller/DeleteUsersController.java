@@ -26,17 +26,14 @@ public class DeleteUsersController implements Controller {
         this.sysUserService = sysUserService;
     }
     @Override
-    public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) throws Exception {
+    public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) {
         String userIds = arg0.getParameter("userIds");
         if (StringUtils.isEmpty(userIds)){
             return null;
         }
         String[] userIdArr = userIds.split(",");
-        if(userIdArr == null){
-            return null;
-        }
 
-        List<Long> userIdList = new ArrayList<Long>();
+        List<Long> userIdList = new ArrayList<>();
         for(String userId: userIdArr){
             userIdList.add(Long.valueOf(userId));
         }
