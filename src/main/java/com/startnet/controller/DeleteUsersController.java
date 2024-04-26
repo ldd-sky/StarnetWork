@@ -7,6 +7,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class DeleteUsersController implements Controller {
         this.sysUserService = sysUserService;
     }
     @Override
-    public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) {
+    public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) throws IOException {
         String userIds = arg0.getParameter("userIds");
         if (StringUtils.isEmpty(userIds)){
             return null;
@@ -41,8 +42,8 @@ public class DeleteUsersController implements Controller {
         try{
             int ret = sysUserService.deleteUsers(userIdList);
             arg1.getOutputStream().write(String.valueOf(ret).getBytes());
-        } catch (Exception e){
-            e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         return null;
