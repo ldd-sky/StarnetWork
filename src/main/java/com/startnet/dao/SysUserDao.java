@@ -37,8 +37,7 @@ public class SysUserDao {
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
             if (rs.next()) {
-                long maxId = rs.getInt(1);
-                return maxId;
+                return rs.getInt(1);
             }
         } catch (SQLException e) {
             throw new RuntimeException("Error while retrieving max id", e);
@@ -82,7 +81,7 @@ public class SysUserDao {
      * @return  List<SysUser>
      */
     public List<SysUser> listAll(){
-        List<SysUser> dataList = new ArrayList<SysUser>();
+        List<SysUser> dataList = new ArrayList<>();
         String sql = "select * from sys_user";
         Connection conn = dbUtils.getConn();
         PreparedStatement pstm = null;
@@ -154,7 +153,7 @@ public class SysUserDao {
                 pstm.setLong(1, id);
                 pstm.addBatch();
             }
-            int[] ret = pstm.executeBatch();
+            pstm.executeBatch();
             return 0;
         } catch (SQLException e) {
             throw new RuntimeException("SysUserDao-deleteUserByIds error", e);
