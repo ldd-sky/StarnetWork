@@ -4,7 +4,6 @@ import com.startnet.bean.SysUser;
 import com.startnet.service.ISysUserService;
 import com.startnet.utils.SecurityUtils;
 import com.startnet.utils.StringUtils;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 

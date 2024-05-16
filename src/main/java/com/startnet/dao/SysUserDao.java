@@ -3,7 +3,6 @@ package com.startnet.dao;
 import com.startnet.bean.SysUser;
 import com.startnet.utils.DBUtils;
 import com.startnet.utils.SecurityUtils;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.*;
 import java.util.ArrayList;
