@@ -19,6 +19,6 @@ public class ListUserController implements Controller {
     @Override
     public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1) {
         // 直接跳转到userList页面
-        return new ModelAndView("userList");
+        return new ModelAndView("userList.html");
     }
 }

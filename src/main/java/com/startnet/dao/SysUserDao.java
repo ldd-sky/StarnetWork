@@ -2,6 +2,8 @@ package com.startnet.dao;
 
 import com.startnet.bean.SysUser;
 import com.startnet.utils.DBUtils;
+import com.startnet.utils.SecurityUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -115,19 +117,24 @@ public class SysUserDao {
      * @return          0 正确 -1 不正确
      */
     public int findByUserNameAndPwd(String userName, String password){
-        String sql = "select * from sys_user t where t.userName=? and t.password=?";
+        String sql = "select * from sys_user t where t.userName=?";
         Connection conn = dbUtils.getConn();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try {
-            // 查询
             pstm = conn.prepareStatement(sql);
             pstm.setString(1, userName);
-            pstm.setString(2, password);
             rs = pstm.executeQuery();
-            if(rs.next()){
-                return 0;
+            if (rs.next()) {
+                // 从数据库中获取加密的密码
+                String encryptedPassword = rs.getString("password");
+
+                if (SecurityUtils.matchesPassword(password, encryptedPassword)) {
+                    // 密码匹配
+                    return 0;
+                }
             }
+
         } catch (SQLException e) {
             throw new RuntimeException("SysUserDao-findByUserNameAndPwd error", e);
         } finally {

@@ -2,7 +2,9 @@ package com.startnet.controller;
 
 import com.startnet.bean.SysUser;
 import com.startnet.service.ISysUserService;
+import com.startnet.utils.SecurityUtils;
 import com.startnet.utils.StringUtils;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
@@ -36,12 +38,7 @@ public class AddUserController implements Controller {
         String address = arg0.getParameter("address");
 
         // 验证用户名和密码不为空
-        if(StringUtils.isEmpty(userName)){
-            arg1.getOutputStream().write("-2".getBytes());
-            return null;
-        }
-
-        if(StringUtils.isEmpty(password)){
+        if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(password)) {
             arg1.getOutputStream().write("-2".getBytes());
             return null;
         }
@@ -49,25 +46,13 @@ public class AddUserController implements Controller {
         // 创建对象
         SysUser sysUser = new SysUser();
         sysUser.setUsername(userName);
-        sysUser.setPassword(password);
-        if(StringUtils.isNotEmpty(age)){
-            sysUser.setAge(Integer.parseInt(age));
-        } else {
-            sysUser.setAge(0);
-        }
-
-        if (StringUtils.isNotEmpty(sex)){
-            if (sex.equals("男")){
-                sysUser.setSex(0);
-            } else {
-                sysUser.setSex(1);
-            }
-        } else {
-            sysUser.setSex(0);
-        }
-
+        // 使用BCryptPasswordEncoder对密码进行加密
+        sysUser.setPassword(SecurityUtils.encryptPassword(password));
+        sysUser.setAge(StringUtils.isNotEmpty(age) ? Integer.parseInt(age) : 0);
+        sysUser.setSex(StringUtils.isNotEmpty(sex) && sex.equals("男") ? 0 : 1);
         sysUser.setMobilePhone(mobilePhone);
         sysUser.setAddress(address);
+
         int ret = sysUserService.addSysUser(sysUser);
         arg1.getOutputStream().write(String.valueOf(ret).getBytes());
 

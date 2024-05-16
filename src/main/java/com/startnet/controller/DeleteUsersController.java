@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>Description: 删除用户</p >
@@ -32,12 +34,11 @@ public class DeleteUsersController implements Controller {
         if (StringUtils.isEmpty(userIds)){
             return null;
         }
-        String[] userIdArr = userIds.split(",");
 
-        List<Long> userIdList = new ArrayList<>();
-        for(String userId: userIdArr){
-            userIdList.add(Long.valueOf(userId));
-        }
+        String[] userIdArr = userIds.split(",");
+        List<Long> userIdList = Arrays.stream(userIdArr)
+                .map(Long::valueOf)
+                .collect(Collectors.toList());
 
         try{
             int ret = sysUserService.deleteUsers(userIdList);
